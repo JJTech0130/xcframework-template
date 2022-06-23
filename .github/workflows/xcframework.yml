@@ -49,5 +49,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
           files: xcframework/*.xcframework
+          tag_name: "latest"
 
     
