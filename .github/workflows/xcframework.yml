@@ -44,11 +44,14 @@ jobs:
       with:
         tag: "latest"
         force_push_tag: true
-        
+    
+    - name: Zip XCFramework
+      run: cd xcframework; zip -r xcframework.zip *.xcframework
+      
     - name: Upload as release
       uses: softprops/action-gh-release@v1
       with:
-          files: xcframework/*.xcframework
+          files: xcframework.zip
           tag_name: "latest"
 
     
