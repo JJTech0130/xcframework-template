@@ -35,12 +35,15 @@ jobs:
     environment: production
     
     steps:
+    - uses: actions/checkout@v3
+    
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
       
-    - uses: rickstaa/action-create-tag@v1.3.2
+    - uses: rickstaa/action-create-tag@v1
       with:
         tag: "latest"
+        force_push_tag: true
         
     - name: Upload as release
       uses: softprops/action-gh-release@v1
