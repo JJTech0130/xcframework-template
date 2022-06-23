@@ -16,6 +16,9 @@ jobs:
     
     - name: Add aarch64-apple-ios target
       run: rustup target add aarch64-apple-ios
+      
+    - name: Add x86_64-apple-ios target
+      run: rustup target add x86_64-apple-ios
        
     - name: Generate XCFramework
       run: make xcframework
