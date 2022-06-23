@@ -38,7 +38,9 @@ jobs:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
       
-    - name: test
-      run: ls xcframework
+    - name: Upload as release
+      uses: softprops/action-gh-release@v1
+      with:
+          files: xcframework/*.xcframework
 
     
