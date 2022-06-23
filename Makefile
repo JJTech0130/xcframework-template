@@ -9,7 +9,7 @@ xcframework: aarch64 x86_64
 		-output "target/$(CRATE_NAME).xcframework"
 
 aarch64:
-	@cargo build --release --lib --target aarch64-apple-ios
+	@cargo build --release --target aarch64-apple-ios
 
 x86_64:
-	@cargo build --release --lib --target x86_64-apple-ios
+	@cargo build --release --target x86_64-apple-ios
