@@ -25,5 +25,5 @@ jobs:
       
     - uses: actions/upload-artifact@v3
       with:
-        name: xcframework.zip
+        name: xcframework
         path: target/*.xcframework/
