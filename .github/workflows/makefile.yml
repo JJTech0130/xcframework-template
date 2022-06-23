@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Generate XCFramework
 
 on:
   push:
@@ -22,3 +22,11 @@ jobs:
        
     - name: Generate XCFramework
       run: make xcframework
+      
+    - name: Zip XCFramework
+      run: zip -r test.xcframework.zip target/*.xcframework/
+      
+    - uses: actions/upload-artifact@v3
+      with:
+        name: xcframework
+        path: test.xcframework.zip
