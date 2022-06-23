@@ -24,9 +24,9 @@ jobs:
       run: make xcframework
       
     - name: Zip XCFramework
-      run: zip -r test.xcframework.zip target/*.xcframework/
+      run: cd target; zip -r xcframework.zip *.xcframework
       
     - uses: actions/upload-artifact@v3
       with:
-        name: xcframework
-        path: test.xcframework.zip
+        name: xcframework.zip
+        path: target/xcframework.zip
