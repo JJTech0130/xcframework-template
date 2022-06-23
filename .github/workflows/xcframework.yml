@@ -38,6 +38,10 @@ jobs:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
       
+    - uses: rickstaa/action-create-tag@v1
+      with:
+        tag: "latest"
+        
     - name: Upload as release
       uses: softprops/action-gh-release@v1
       with:
