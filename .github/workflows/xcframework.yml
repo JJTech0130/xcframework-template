@@ -40,8 +40,7 @@ jobs:
       
     - uses: rickstaa/action-create-tag@v1
       with:
-        tag: "latest"
-        force_push_tag: true
+        tag: ${{ github.sha }}
     
     - name: Zip XCFramework
       run: cd xcframework; zip -r xcframework.zip *.xcframework
@@ -50,6 +49,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
           files: xcframework/xcframework.zip
-          tag_name: "latest"
+          tag_name: ${{ github.sha }}
 
     
