@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  deploy:
     runs-on: macos-latest
     environment: production
     
@@ -14,25 +14,26 @@ jobs:
     
     - name: Add aarch64-apple-ios target
       run: rustup target add aarch64-apple-ios
-      
     - name: Add x86_64-apple-ios target
       run: rustup target add x86_64-apple-ios
        
     - name: Generate XCFramework
       run: make xcframework
       
-    - uses: actions/upload-artifact@v3
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
       with:
         name: xcframework
         path: target/*.xcframework/
         
-    - uses: actions/github-script@v6
+    - name: Dispatch workflow in Swift package repository
+      uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.SIDESTORER_TOKEN }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
-            owner: 'JJTech0130',
-            repo: 'swift-xcframework',
+            owner: '${{ secrets.SWIFT_PACKAGE_OWNER }}',
+            repo: '${{ secrets.SWIFT_PACKAGE_REPO }}',
             workflow_id: 'main.yml',
             ref: 'master',
             inputs: {
