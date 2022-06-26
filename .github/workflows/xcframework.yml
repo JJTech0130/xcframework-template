@@ -6,9 +6,9 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
-
+    environment: production
+    
     steps:
     - uses: actions/checkout@v3
     
@@ -25,3 +25,17 @@ jobs:
       with:
         name: xcframework
         path: target/*.xcframework/
+        
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.SIDESTORER_TOKEN }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'JJTech0130',
+            repo: 'swift-xcframework',
+            workflow_id: 'main.yml',
+            ref: 'master',
+            inputs: {
+              url: 'https://bogus.com'
+            }
+          })
