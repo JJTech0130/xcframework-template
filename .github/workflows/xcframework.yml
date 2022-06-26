@@ -36,6 +36,6 @@ jobs:
             workflow_id: 'main.yml',
             ref: 'master',
             inputs: {
-              url: 'https://bogus.com'
+              url: 'https://nightly.link/JJTech0130/xcframework-template/actions/runs/${{ github.run_id }}/xcframework.zip'
             }
           })
